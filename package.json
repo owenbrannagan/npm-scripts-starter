@@ -1,0 +1,42 @@
+{
+  "name": "git-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "scss": "sass src/sass:dist/css",
+    "concat:js": "concat-glob-cli -f src/js/**/*.js -o dist/js/bundle.js",
+    "cssmin": "cleancss -o dist/css/index.min.css dist/css/index.css",
+    "uglify": "uglifyjs -o dist/js/bundle.min.js dist/js/bundle.js",
+    "build:css": "npm run scss && npm run cssmin",
+    "build:js": "npm run concat:js && npm run uglify",
+    "build": "npm run build:css && npm run build:js",
+    "watch:css": "onchange 'src/sass/*.scss' -- npm run build:css",
+    "watch:js": "onchange 'src/js/*.js' -- npm run build:js",
+    "reload": "reload -b",
+    "watch": "npm run reload & npm run watch:css & npm run watch:js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BathSpaWebDev/git-demo.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BathSpaWebDev/git-demo/issues"
+  },
+  "homepage": "https://github.com/BathSpaWebDev/git-demo#readme",
+  "devDependencies": {
+    "clean-css-cli": "^5.5.0",
+    "concat": "^1.0.3",
+    "concat-glob-cli": "^0.1.0",
+    "npm": "^8.3.0",
+    "npm-run-all": "^4.1.5",
+    "onchange": "^7.1.0",
+    "sass": "^1.48.0",
+    "uglify-js": "^3.14.5",
+    "reload": "^3.2.0"
+  },
+  "dependencies": {
+  }
+}
